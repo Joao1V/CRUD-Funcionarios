@@ -11,12 +11,21 @@ const App = () => {
 
     {id:3, name:'Astronildo', email:"Astronildo@gmail.com", cpf:"333.333.333-33", birth:"02/11/1800", phone:"(67) 9 9601-5485", role:"Secretário (a)", wage:"R$ 1.100,23" },
 
-    {id:4, name:'Jerilene', email:"Jerilene@gmail.com", cpf:"444.444.444-44", birth:"01/09/1900", phone:"(67) 9 9601-5485", role:"Secretário (a)", wage:"R$ 12.000,00" },
+    {id:4, name:'Jerilene', email:"Jerilene@gmail.com", cpf:"444.444.444-44", birth:"01/09/1900", phone:"(67) 9 9601-5485", role:"Gerente", wage:"R$ 12.000,00" },
   ]
 
   const [users, setUsers] = useState (usersData)
+
+  const addUser = (user) => {
+    user.id = users.length +1 
+    setUsers ([...users, user])
+  }
   return (
     <div>
+      <div>
+        <h1>Cadastre seu Funcionário</h1>
+        <UserRegister addUser={addUser} />
+      </div>
       <div>
         <h1>Funcionários Cadastrados</h1>
         <UserTable users={users}/>
