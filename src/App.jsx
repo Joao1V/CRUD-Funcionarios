@@ -23,11 +23,12 @@ const App = () => {
   return (
     <div>
       <div>
-        <h1>Cadastre seu Funcionário</h1>
+        <h1 className='text-4xl'>Cadastre seu Funcionário</h1>
         <UserRegister addUser={addUser} />
       </div>
       <div>
-        <h1>Funcionários Cadastrados</h1>
+        <h1 className='text-3xl'>Funcionários Cadastrados</h1>
+        <input type="text" />
         <UserTable users={users}/>
       </div>
     </div>
