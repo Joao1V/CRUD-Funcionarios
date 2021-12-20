@@ -15,11 +15,16 @@ const App = () => {
   ]
 
   const [users, setUsers] = useState (usersData)
+  
 
   const addUser = (user) => {
     user.id = users.length +1 
     setUsers ([...users, user])
   }
+  const deleteUser = (id) => {
+    setUsers(users.filter((user) => user.id !==id))
+  }
+
   return (
     <div className=''>
       <div>
@@ -28,7 +33,7 @@ const App = () => {
       </div>
       <div>
         <h1 className='text-white text-4xl font-semibold text-center mt-6 mb-8'>Funcionários Cadastrados</h1>
-        <UserTable users={users}/>
+        <UserTable users={users} deleteUser={deleteUser}/>
       </div>
     </div>
   );
