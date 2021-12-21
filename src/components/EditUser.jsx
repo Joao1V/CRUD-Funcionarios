@@ -1,42 +1,24 @@
-import { render } from '@testing-library/react'
-import React, { useState } from 'react'
+import react, {useState} from "react";
 import { maskCPF, maskPhone, maskDate } from '../mask'
 
-const UserRegister = props => {
-  const initialFormState = {
-    id: null,
-    name: '',
-    email: '',
-    cpf: '',
-    birth: '',
-    phone: '',
-    role: '',
-    wage: ''
+const EditUser = (props) => {
+  const [user, setUser] = useState (props.currentUser)
+
+  const inputChange = (event) => {
+    const {name, value} = event.target 
+
+    setUser ({...user, [name]:value})
   }
 
-  const [user, setUser] = useState(initialFormState)
-
   return (
-    <div>
-      <form
-        onSubmit={event => {
-          event.preventDefault()
-          if (
-            !user.name ||
-            !user.email ||
-            !user.cpf ||
-            !user.birth ||
-            !user.phone ||
-            !user.role ||
-            !user.wage
-          )
-            return
-          props.addUser(user)
+    <form
+    onSubmit={(event) => {
+      event.preventDefault ()
 
-          setUser(initialFormState)
-        }}
-      >
-        <div className="grid grid-cols-3 gap-2 auto-cols-auto font-semibold w-1/2 m-auto ">
+      props.updateUser (user.id, user)
+    }}
+    >
+      <div className="grid grid-cols-3 gap-2 auto-cols-auto font-semibold w-1/2 m-auto ">
           <input
             className="py-2 rounded-md text-xl text-center"
             name="Nome"
@@ -63,7 +45,7 @@ const UserRegister = props => {
             placeholder="CPF"
             type="text"
             value={user.cpf}
-            onChange={e => setUser({ ...user, cpf: maskCPF(e.target.value) })}
+            onChange={e => setUser({ ...user, cpf: maskCPF(e.target.value)})}
           />
           <input
             className="py-2 rounded-md text-xl text-center"
@@ -72,7 +54,8 @@ const UserRegister = props => {
             placeholder="Data de Nascimento"
             type="text"
             value={user.birth}
-            onChange={e => setUser({ ...user, birth: maskDate(e.target.value) })}/>
+            onChange={e => setUser({ ...user, birth: maskDate(e.target.value)})}
+          />
           <input
             className="py-2 rounded-md text-xl text-center"
             name="Telefone"
@@ -80,8 +63,7 @@ const UserRegister = props => {
             placeholder="Telefone"
             type="tel"
             value={user.phone}
-            onChange={e =>
-              setUser({ ...user, phone: maskPhone(e.target.value) })
+            onChange={e => setUser({ ...user, phone: maskPhone(e.target.value)})
             }
           />
 
@@ -94,29 +76,27 @@ const UserRegister = props => {
             value={user.wage}
             onChange={e => setUser({ ...user, wage: e.target.value })}
           />
+
           <select
             className="py-2 rounded-md text-xl text-center"
             onChange={e => setUser({ ...user, role: e.target.value })}>
-
-            <option value="Selecione o cargo" disabled>
-              Selecione o Cargo
-            </option>
-            <option value="Desenvolvedor(a)">Desenvolvedor(a)</option>
-            <option value="Designer">Designer</option>
-            <option value="Secretário">Secretário(a)</option>
-            <option value="Gerente">Gerente</option>
+              <option value="Selecione o cargo" disabled>Selecione o Cargo</option>
+              <option value="Desenvolvedor(a)">Desenvolvedor(a)</option>
+              <option value="Designer">Designer</option>
+              <option value="Secretário">Secretário(a)</option>
+              <option value="Gerente">Gerente</option>
           </select>
-        </div>
-        <div className='grid'>
-        <button
-          className=" w-48 h-14 bg-black text-white text-center rounded-xl mx-auto hover:bg-white hover:text-black"
-          type="submit"
-        >
-          Adicionar Usuário</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      
+      <div className="flex justify-center mt-4 gap-2">
+      <button className="w-48 h-14 bg-emerald-700 text-white text-center rounded-xl  hover:bg-emerald-900"  type="submit">Atualizar Usuário</button>
+
+<button className=" w-48 h-14 bg-red-700 text-white text-center rounded-xl hover:bg-red-900" onClick={() => props.setEditing (false)}> Cancelar</button>
+      </div>
+ 
+      
+    </form>
   )
 }
 
-export default UserRegister
+export default EditUser

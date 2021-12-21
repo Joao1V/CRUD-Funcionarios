@@ -34,8 +34,10 @@ const UserTable = props => {
                 <td className=" px-5 py-2">{user.wage}</td>
                 <div className="flex">
                   <button
-                    onClick={() => props.editRow(user)}
-                    className="hover:text-cyan-500 m-auto text-2xl"
+                    onClick={()=> {
+                      props.editRow (user)
+                    }}
+                    className="hover:text-emerald-900 m-auto text-2xl"
                   >
                     <ion-icon name="create-outline"></ion-icon>
                   </button>
