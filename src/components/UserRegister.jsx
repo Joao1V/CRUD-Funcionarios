@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react'
 import React, { useState } from 'react'
-import { maskCPF, maskPhone, maskDate } from '../mask'
+import { maskCPF, maskPhone, maskDate, maskBRL } from '../mask'
 
 const UserRegister = props => {
   const initialFormState = {
@@ -27,7 +26,7 @@ const UserRegister = props => {
             !user.cpf ||
             !user.birth ||
             !user.phone ||
-            !user.role ||
+             user.role ||
             !user.wage
           )
             return
@@ -92,11 +91,11 @@ const UserRegister = props => {
             placeholder="Salário"
             type="text"
             value={user.wage}
-            onChange={e => setUser({ ...user, wage: e.target.value })}
+            onChange={e => setUser({ ...user, wage:maskBRL (e.target.value) })}
           />
           <select
             className="py-2 rounded-md text-xl text-center"
-            onChange={e => setUser({ ...user, role: e.target.value })}>
+            onChange={e => setUser({ ...user, role:e.target.value})}>
 
             <option value="Selecione o cargo" disabled>
               Selecione o Cargo
