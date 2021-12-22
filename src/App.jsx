@@ -14,7 +14,7 @@ const App = () => {
       birth: '09/12/2000',
       phone: '(67) 99231-5123',
       role: 'Desenvolvedor (a)',
-      wage: 'R$ 1.231,23'
+      wage: '1.231,23'
     },
 
     {
@@ -25,7 +25,7 @@ const App = () => {
       birth: '05/10/1920',
       phone: '(67) 99210-5410',
       role: 'Designer',
-      wage: 'R$ 1.500,23'
+      wage: '1.500,23'
     },
 
     {
@@ -36,7 +36,7 @@ const App = () => {
       birth: '02/11/1800',
       phone: '(67) 99601-5485',
       role: 'Secretário (a)',
-      wage: 'R$ 1.100,23'
+      wage: '1.100,23'
     },
 
     {
@@ -47,7 +47,7 @@ const App = () => {
       birth: '01/09/1900',
       phone: '(67) 99601-5485',
       role: 'Gerente',
-      wage: 'R$ 12.000,00'
+      wage: '12.000,00'
     }
   ]
 

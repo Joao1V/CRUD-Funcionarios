@@ -35,7 +35,7 @@ const UserRegister = props => {
           setUser(initialFormState)
         }}
       >
-        <div className="grid grid-cols-3 gap-2 auto-cols-auto font-semibold w-1/2 m-auto ">
+        <div className="grid grid-cols-3 gap-2 auto-cols-auto font-semibold w-3/4 mx-auto">
           <input
             className="py-2 rounded-md text-xl text-center"
             name="Nome"
@@ -82,17 +82,16 @@ const UserRegister = props => {
             onChange={e =>
               setUser({ ...user, phone: maskPhone(e.target.value) })
             }
-          />
-
-          <input
-            className="py-2 rounded-md text-xl text-center"
-            name="Salário"
-            title="Salário"
-            placeholder="Salário"
-            type="text"
-            value={user.wage}
-            onChange={e => setUser({ ...user, wage:maskBRL (e.target.value) })}
-          />
+            />
+            <input
+              className="py-2 rounded-md text-xl text-center"
+              name="Salário"
+              title="Salário"
+              placeholder="Salário"
+              type="text"
+              value={user.wage}
+              onChange={e => setUser({ ...user, wage:maskBRL (e.target.value) })}
+            />
           <select
             className="py-2 rounded-md text-xl text-center"
             onChange={e => setUser({ ...user, role:e.target.value})}>

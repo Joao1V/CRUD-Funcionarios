@@ -31,7 +31,7 @@ const UserTable = props => {
                 <td className=" px-5 py-2 text-center">{user.birth}</td>
                 <td className=" px-5 py-2">{user.phone}</td>
                 <td className=" px-5 py-2 text-center">{user.role}</td>
-                <td className=" px-5 py-2">{user.wage}</td>
+                <td className=" px-5 py-2">{"R$ "+user.wage}</td>
                 <div className="flex">
                   <button
                     onClick={()=> {

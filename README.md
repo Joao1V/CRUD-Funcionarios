@@ -1,0 +1,2 @@
+# Crud-Funcionários
+  * O projeto criado tem a finalidade de listar usuários. Através dos campos o administrador pode inserir as informações e cadastrar, todos os dados do funcionário que serão salvos na tabela. 
