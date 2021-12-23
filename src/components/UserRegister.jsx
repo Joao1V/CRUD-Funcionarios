@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { maskCPF, maskPhone, maskDate, maskBRL } from '../mask'
 
+toast.configure()
 const UserRegister = props => {
   const initialFormState = {
     id: null,
@@ -15,8 +18,17 @@ const UserRegister = props => {
 
   const [user, setUser] = useState(initialFormState)
 
+  const notifySucess = () => {
+    toast.success ('Usuário registrado!', {position: toast.POSITION.TOP_RIGHT})
+  }
+
+  const notifyWarn = () => {
+    toast.warn ('Preencha todos os campos!', {position: toast.POSITION.TOP_RIGHT})
+  }
+  
   return (
     <div>
+       
       <form
         onSubmit={event => {
           event.preventDefault()
@@ -26,11 +38,15 @@ const UserRegister = props => {
             !user.cpf ||
             !user.birth ||
             !user.phone ||
-             user.role ||
+            !user.role ||
             !user.wage
-          )
-            return
-          props.addUser(user)
+          ) {
+            notifyWarn(user != "")              
+          } else {
+            notifySucess()
+            props.addUser(user)
+          }          
+            
 
           setUser(initialFormState)
         }}
@@ -95,10 +111,8 @@ const UserRegister = props => {
           <select
             className="py-2 rounded-md text-xl text-center"
             onChange={e => setUser({ ...user, role:e.target.value})}>
-
-            <option value="Selecione o cargo" disabled>
-              Selecione o Cargo
-            </option>
+              
+            <option value="Selecione o cargo">Selecione o Cargo</option>
             <option value="Desenvolvedor(a)">Desenvolvedor(a)</option>
             <option value="Designer">Designer</option>
             <option value="Secretário">Secretário(a)</option>

@@ -1,5 +1,5 @@
 import react, {useState} from "react";
-import { maskCPF, maskPhone, maskDate } from '../mask'
+import { maskCPF, maskPhone, maskDate, maskBRL } from '../mask'
 
 const EditUser = (props) => {
   const [user, setUser] = useState (props.currentUser)
@@ -74,7 +74,7 @@ const EditUser = (props) => {
             placeholder="Salário"
             type="text"
             value={user.wage}
-            onChange={e => setUser({ ...user, wage: e.target.value })}
+            onChange={e => setUser({ ...user, wage:maskBRL (e.target.value) })}
           />
 
           <select
