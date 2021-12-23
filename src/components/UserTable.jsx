@@ -1,10 +1,22 @@
-import moment from 'moment'
 import React, { useEffect } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 const UserTable = props => {
   useEffect(() => {
     console.log(props.users)
   }, [])
+
+  const notifySucess = () => {
+    toast.success ('Usuário registrado!', {position: toast.POSITION.TOP_RIGHT})}
+
+  const notifyInfo = () => {
+    toast.info ('Edição de usuário ativada!', {position: toast.POSITION.TOP_RIGHT})}
+
+  const notifyDelete = () => {
+    toast.error ('Usuário deletado.',{position: toast.POSITION.TOP_RIGHT})}
+
   return (
     <div className="flex justify-center">
       <table className="mx-auto ">
@@ -35,6 +47,7 @@ const UserTable = props => {
                 <div className="flex">
                   <button
                     onClick={()=> {
+                      notifyInfo();
                       props.editRow (user)
                     }}
                     className="hover:text-emerald-900 m-auto text-2xl"
@@ -42,7 +55,9 @@ const UserTable = props => {
                     <ion-icon name="create-outline"></ion-icon>
                   </button>
                   <button
-                    onClick={() => props.deleteUser(user.id)}
+                    onClick={() => {
+                      notifyDelete();
+                      props.deleteUser(user.id);}}
                     className="hover:text-red-900 m-auto text-2xl"
                   >
                     <ion-icon name="trash-outline"></ion-icon>

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import UserRegister from './components/UserRegister'
 import UserTable from './components/UserTable'
 import EditUser from './components/EditUser'
@@ -71,8 +70,8 @@ const App = () => {
     setUsers([...users, user])
   }
   const deleteUser = id => {
-    setUsers(users.filter(user => user.id !== id))
-  }
+    setUsers(users.filter(user => user.id !== id))}
+    
   const editRow = user => { // A função ativa o modo de edição e define o usuário atual
   setEditing (true)
 
